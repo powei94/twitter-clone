@@ -25,6 +25,20 @@
                 <small>@totallynotthedoctor</small>
                 <p> <%= tweet.content%> </p>
             </div>
+            <nav class="level">
+            <div class="level-left is-mobile">
+                <%= link_to tweet, class: "level-item" do %>
+                    <span class="icon"> <i class="fas fa-link" aria-hidden="true"></i> </span>
+                <% end %>
+                <%= link_to edit_tweet_path(tweet), class: "level-item" do %>
+                    <span class="icon"> <i class="fas fa-edit" aria-hidden="true"></i> </span>
+                <% end %>
+                <%= link_to tweet, method: :delete, data: {confirm: "¿Borrar este Tweet?"} do %>
+                    <span class="icon"> <i class="fas fa-trash" aria-hidden="true"></i> </span>
+                <% end %>
+
+            </div>
+            </nav>
         </div>
     </article>
     </div>
