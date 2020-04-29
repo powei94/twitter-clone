@@ -1,39 +1,76 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2">Edita tus datos</h2>
 
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
 
-
-
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Esperando confirmación de: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.input :password,
-                hint: "Deja el campo vacío si no deseas cambiarla",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "Necesitamos tu contraseña actual para realizar los cambios",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+        <div class="field">
+          <div class="control">
+            <%= f.input :email, required: true, autofocus: true,
+                        input_html: { class: "input" },
+                        wrapper: false,
+                        label: "Correo electrónico",
+                        label_html: { class:"label" }
+                        %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <p>Esperando confirmación de: <%= resource.unconfirmed_email %></p>
+            <% end %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <%= f.input :password,
+                        hint: "Deja el campo vacío si no deseas cambiarla",
+                        required: false,
+                        input_html: { class: "input" },
+                        wrapper: false,
+                        label: "Contraseña nueva",
+                        label_html: { class:"label" }
+                        %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <%= f.input :password_confirmation,
+                        required: false,
+                        input_html: { class: "input" },
+                        wrapper: false,
+                        label: "Confirmación de contraseña nueva",
+                        label_html: { class:"label" }
+                        %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <%= f.input :current_password,
+                        hint: "Necesitamos tu contraseña actual para realizar los cambios.",
+                        required: true,
+                        input_html: { class: "input" },
+                        wrapper: false,
+                        label: "Contraseña",
+                        label_html: { class:"label" }
+                        %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <%= f.button :submit, "Actualizar", class: "button is-info" %>
+          </div>
+        </div>
+      <% end %>
+      
+      <br/>
+      <h3>Eliminar mi cuenta</h3>
+      <p>¿No estás conforme? <%= link_to "Eliminar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, method: :delete %></p>
+      <%= link_to "Volver atrás", :back %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, method: :delete %></p>
-
-<%= link_to "Volver atrás", :back %>
+</div>
