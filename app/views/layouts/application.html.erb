@@ -24,10 +24,7 @@
   	<% end %>
 
     <script type="text/javascript">
-      console.log('hello there')
-      console.log(document.querySelectorAll('notification'))
       document.querySelectorAll('.notification').forEach(notification => {
-        console.log(notification)
         setTimeout(() => {
           notification.style.display = 'none'
         }, 2000);
